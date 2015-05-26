@@ -14,7 +14,6 @@ public class SomaMatrizesIncompativeisException extends MatrizesIncompativeisExc
     public SomaMatrizesIncompativeisException(Matriz m1, Matriz m2) {
         super(m1, m2);  
     }
-    
-
-        
+    //@Override
+     
 }
