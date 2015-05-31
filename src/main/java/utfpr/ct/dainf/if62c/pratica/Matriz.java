@@ -15,10 +15,9 @@ package utfpr.ct.dainf.if62c.pratica;
      * @throws utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException
      */
     public Matriz(int m, int n) throws MatrizInvalidaException {
-        if(m<=0 || n<=0){
-        mat = new double[m][n];
-        throw new MatrizInvalidaException(this);
-        }
+        if(m<=0 || n<=0)
+            throw new MatrizInvalidaException(m, n);
+        
         
         mat = new double[m][n];
     }
@@ -37,6 +36,7 @@ package utfpr.ct.dainf.if62c.pratica;
      * @throws utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException
      */
     public Matriz getTransposta() throws MatrizInvalidaException {
+        try{
         Matriz t = new Matriz(mat[0].length, mat.length);
              
         for (int i = 0; i < mat.length; i++) {
@@ -45,6 +45,10 @@ package utfpr.ct.dainf.if62c.pratica;
             }
         }
         return t;
+        } catch(MatrizInvalidaException e){
+            System.err.println(e);
+            return null;
+        }
     }
     
     /**

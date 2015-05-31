@@ -10,21 +10,23 @@ package utfpr.ct.dainf.if62c.pratica;
  * @author a1654314
  */
 public class MatrizInvalidaException extends Exception{
-    private final Matriz m1;
+    private final int m, n;
     
-    public MatrizInvalidaException(Matriz m1){
+    public MatrizInvalidaException(int m, int n){
         super(String.format(
         "Matriz de %dx%d não pode ser criada",
-        m1.getMatriz().length, m1.getMatriz()[0].length));
-        this.m1 = m1;
+        m,n));
+        
+        this.m = m;
+        this.n = n;
     }
-    
+   
     public int getNumLinhas(){
-        return m1.getMatriz().length;
+        return m;
     }
     
     public int getNumColunas(){
-        return m1.getMatriz()[0].length;
+        return n;
     }
     
 }
