@@ -34,8 +34,9 @@ package utfpr.ct.dainf.if62c.pratica;
     /**
      * Retorna a matriz transposta.
      * @return A matriz transposta.
+     * @throws utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException
      */
-    public Matriz getTransposta() {
+    public Matriz getTransposta() throws MatrizInvalidaException {
         Matriz t = new Matriz(mat[0].length, mat.length);
              
         for (int i = 0; i < mat.length; i++) {
@@ -50,10 +51,14 @@ package utfpr.ct.dainf.if62c.pratica;
      * Retorna a soma desta matriz com a matriz recebida como argumento.
      * @param m A matriz a ser somada
      * @return A soma das matrizes
+     * @throws utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException
      */
-    public Matriz soma(Matriz m) {
-        
-       int i, j;
+    public Matriz soma(Matriz m) throws SomaMatrizesIncompativeisException, MatrizInvalidaException {
+            
+       if(m.getMatriz().length != mat.length || m.getMatriz()[0].length != mat[0].length)
+             throw new SomaMatrizesIncompativeisException(this, m);
+             
+       int i,j;
        
        Matriz Soma = new Matriz(mat.length, mat[0].length);
        
@@ -70,8 +75,13 @@ package utfpr.ct.dainf.if62c.pratica;
      * Retorna o Produto desta matriz com a matriz recebida como argumento.
      * @param m A matriz a ser multiplicada
      * @return O Produto das matrizes
+     * @throws utfpr.ct.dainf.if62c.pratica.MatrizInvalidaException
      */
-    public Matriz prod(Matriz m) {
+    public Matriz prod(Matriz m) throws MatrizInvalidaException {
+        
+       if(m.getMatriz().length != mat.length || m.getMatriz()[0].length != mat[0].length)
+            throw new ProdMatrizesIncompativeisException(this, m);
+       
         int i, j, k;
        
        Matriz Produto = new Matriz(mat.length, m.mat[0].length);

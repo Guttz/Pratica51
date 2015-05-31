@@ -12,6 +12,15 @@ public class MatrizesIncompativeisException extends RuntimeException {
         this.m1 = m1;
         this.m2 = m2;
     }
+    
+    public MatrizesIncompativeisException(Matriz m1, Matriz m2, String s) {
+        super(String.format(
+            s,
+            m1.getMatriz().length, m1.getMatriz()[0].length,
+            m2.getMatriz().length, m2.getMatriz()[0].length));
+        this.m1 = m1;
+        this.m2 = m2;
+    }
 
     public Matriz getM1() {
         return m1;
